@@ -14,15 +14,19 @@
 
 <body>
     <div class="container">
-        <h1>BGM Player</h1>
+        <h1>Genshin BGM Player</h1>
 
-
-        <select id="album-select">
-            <option value="">Select an album</option>
-        </select>
+        <div class="controls">
+            <select id="album-select">
+                <option value="">-- Select an album --</option>
+            </select>
+            <select id="language-select">
+              <option value="ja">ja</option>
+              <option value="en">en</option>
+            </select>
+        </div>
 
         <div id="album-info">
-            <div id="album-image"></div>
             <div id="songs-list-container"></div>
         </div>
 

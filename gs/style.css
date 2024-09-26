@@ -4,7 +4,7 @@ body {
     font-weight: 400;
     font-style: normal;
     background-color:black;
-    color: rgb(255, 255, 255);
+    color: rgb(240, 240, 240);
     margin: 0;
 }
 
@@ -13,23 +13,11 @@ body {
   margin: auto;
   padding: 20px;
   background-color: black;
-  color: rgb(255, 255, 255);
+  color: rgb(240, 240, 240);
 }
 
 h1 {
   text-align: center;
-}
-
-#album-select {
-  display: block;
-  margin: 20px auto;
-  padding: 10px;
-  font-size: 16px;
-}
-
-#album-info {
-  margin-top: 20px;
-  height: 140px;
 }
 
 .songs-container {
@@ -56,7 +44,7 @@ iframe {
 }
 
 .simplebar-scrollbar::before {
-  background-color: #ffffff
+  background-color: rgb(240, 240, 240);
 }
 .simplebar-track.simplebar-vertical {
   width: 6px;
@@ -67,43 +55,50 @@ iframe {
 }
 .simplebar-scrollbar {
   width: 6px;
-  background: #ffffff;
+  background: rgb(240, 240, 240);
   border-radius: 3px;
   top: 0;
   right: 2px;
 }
 
+.controls {
+  display: flex; /* フレックスボックスを使用して横並びにする */
+  justify-content: center;
+  gap: 10px; /* プルダウン間の間隔 */
+  margin-bottom: 20px; /* 下に余白を追加 */
+}
+
 /* プルダウンの基本スタイル */
-#album-select {
+select {
   appearance: none; /* デフォルトのスタイルを無効化 */
   -webkit-appearance: none; /* Safari用 */
   -moz-appearance: none; /* Firefox用 */
   background-color: #000000; /* 背景色 */
-  color: #fff; /* テキスト色 */
+  color: rgb(240, 240, 240);; /* テキスト色 */
   font: inherit;
   padding: 10px 40px 10px 15px; /* 右側にスペースを確保して矢印アイコンを表示 */
-  border: 1px solid #ffffff; /* 枠線 */
+  border: 1px solid rgb(240, 240, 240);; /* 枠線 */
   border-radius: 0px;
-  width: 100%; /* 幅を親要素に合わせる */
-  max-width: 80%; /* 最大幅 */
   box-sizing: border-box; /* パディングを含む幅設定 */
   background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2Ij4gICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNNS41IDlsNC41IDQuNSA0LjUtNC41IDEuNCAxLjQtNiA2LTYtNiAxLjQtMS40eiIvPjwvc3ZnPg=='); /* カスタムの矢印アイコンを背景画像として表示 */
   background-repeat: no-repeat;
-  background-position: right 12px top 12px; /* 矢印アイコンの位置 */
+  background-position: right 12px center; /* 矢印アイコンの位置 */
   background-size: 16px; /* 矢印アイコンのサイズ */
   cursor: pointer;
 }
 
 /* フォーカス時のスタイル */
-#album-select:focus {
-  border-color: rgb(255, 255, 255); /* フォーカス時の枠線色をオレンジに */
+select:focus {
+  border-color: rgb(240, 240, 240); /* フォーカス時の枠線色をオレンジに */
   outline: none;
 }
 
-/* プルダウン項目のスタイル */
-#album-select option {
-  background-color: #000000;
-  color: #fff;
-  border: 1px solid #ffffff; /* 枠線 */
-  border-radius: 0px;
+#album-select {
+  width: 100%; /* 幅を親要素に合わせる */
+  max-width: 80%; /* 最大幅 */
+}
+
+/* プルダウンの基本スタイル */
+#language-select {
+  width: 100px;
 }

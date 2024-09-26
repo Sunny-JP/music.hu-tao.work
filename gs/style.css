@@ -1,21 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
-/* Webkit系（Chrome, Safari） */
-::-webkit-scrollbar {
-    display: none;
-}
-
-/* Firefox */
-* {
-    scrollbar-width: none;
-}
-
-/* IE11 */
-body {
-    -ms-overflow-style: none;
-}
-
-
 body {
     font-family: "Noto Sans JP", sans-serif;
     font-optical-sizing: auto;
@@ -27,56 +11,73 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: black;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: black;
+  color: rgb(255, 233, 214);
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
-.album {
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
+#album-select {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 16px;
 }
 
-.album img {
-    max-width: 100px;
-    max-height: 100px;
-    width: auto;
-    height: auto;
-    margin-right: 10px; /* ジャケット画像とアルバム名の間のスペース */
+#album-info {
+  display: flex;
+  margin-top: 20px;
+  max-width: 780px;
 }
 
-.album h3 {
-    margin: 0;
-}
-
-.songs-and-details-container {
-    display: flex;
-    flex: 1; /* 左ペインと右ペインを均等に広げる */
+#album-image img {
+  max-width: 150px;
+  margin-right: 20px;
 }
 
 .songs-container {
-    max-height: 200px;
-    overflow-y: auto;
-    margin-top: 10px;
+  flex: 1;
+  max-height: 140px;
+  overflow-y: auto;
+  margin-top: 10px;
 }
 
 .playlist-item {
-    cursor: pointer;
-    padding: 5px;
+  cursor: pointer;
+  padding: 5px;
+  white-space: nowrap; /* テキストを1行にしてスクロールさせる */
+  overflow: hidden;
+  text-overflow: ellipsis; /* テキストが長すぎる場合に省略記号を表示 */
 }
 
 #player-container {
-    text-align: center;
+  text-align: center;
+  margin-top: 30px;
 }
 
 iframe {
-    width: 100%;
-    height: 315px;
+  width: 100%;
+  height: 315px;
+}
+
+.simplebar-scrollbar::before {
+  background-color: #0e357f
+}
+.simplebar-track.simplebar-vertical {
+  width: 12px;
+}
+.simplebar-track {
+  background: rgba(0, 0, 0, 0);
+  width: 6px;
+}
+.simplebar-scrollbar {
+  background: #0e357f;
+  border-radius: 3px;
+  top: 0;
+  right: 2px;
 }

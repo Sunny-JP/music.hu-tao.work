@@ -1,109 +1,81 @@
-const playlistContainer = document.getElementById('playlist-container');
+const albumSelect = document.getElementById('album-select');
+const albumImageContainer = document.getElementById('album-image');
+const songsListContainer = document.getElementById('songs-list-container');
 const player = document.getElementById('youtube-player');
+
+// 現在のアルバムと曲のインデックス
 let currentAlbumIndex = 0;
 let currentVideoIndex = 0;
 
-// Fetch album data from JSON file
+// アルバムデータをフェッチ
 fetch('albums.json')
     .then(response => response.json())
-    .then(albumsData => createAlbums(albumsData))
+    .then(albumsData => populateAlbumSelect(albumsData))
     .catch(error => console.error('Error fetching albums:', error));
 
-// Function to create albums with swiper
-function createAlbums(albumsData) {
-    const swiperContainer = document.getElementById('swiper-container');
-    const albumsWrapper = document.createElement('div');
-    albumsWrapper.className = 'swiper-wrapper';
-
-    albumsData.forEach((album, albumIndex) => {
-        const albumElement = document.createElement('div');
-        albumElement.className = 'album swiper-slide';
-
-        // Left Pane: Album Image and Name
-        const leftPane = document.createElement('div');
-        leftPane.className = 'left-pane';
-
-        // Add album image
-        const albumImage = document.createElement('img');
-        albumImage.src = album.image;
-        leftPane.appendChild(albumImage);
-
-        // Add album name
-        const albumName = document.createElement('h3');
-        albumName.textContent = album.title;
-        leftPane.appendChild(albumName);
-
-        albumElement.appendChild(leftPane);
-
-        // Right Pane: Songs List
-        const rightPane = document.createElement('div');
-        rightPane.className = 'right-pane';
-
-        const songsContainer = document.createElement('div');
-        songsContainer.className = 'songs-container';
-        album.songs.forEach((song, songIndex) => {
-            const listItem = document.createElement('div');
-            listItem.className = 'playlist-item';
-            const title = song.titles['ja'];
-            listItem.textContent = `${songIndex + 1}. ${title}`;
-            listItem.addEventListener('click', () => playVideo(albumIndex, songIndex, song.videoId));
-            songsContainer.appendChild(listItem);
-        });
-
-        rightPane.appendChild(songsContainer);
-        albumElement.appendChild(rightPane);
-
-        albumsWrapper.appendChild(albumElement);
+// プルダウンメニューにアルバム名を設定
+function populateAlbumSelect(albumsData) {
+    albumsData.forEach((album, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = album.title;
+        albumSelect.appendChild(option);
     });
 
-    swiperContainer.appendChild(albumsWrapper);
-
-    // Initialize Swiper
-    const swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 10,
+    // アルバム選択時にジャケットと曲リストを表示
+    albumSelect.addEventListener('change', () => {
+        const selectedAlbumIndex = albumSelect.value;
+        if (selectedAlbumIndex !== '') {
+            showAlbumInfo(albumsData[selectedAlbumIndex], selectedAlbumIndex);
+        } else {
+            clearAlbumInfo();
+        }
     });
 }
 
-// Function to play video
+// アルバムのジャケットと曲リストを表示
+function showAlbumInfo(album, albumIndex) {
+    // アルバムのジャケットを表示
+    albumImageContainer.innerHTML = '';
+    const albumImage = document.createElement('img');
+    albumImage.src = album.image;
+    albumImageContainer.appendChild(albumImage);
+
+    // 曲リストを表示
+    songsListContainer.innerHTML = ''; // songsListContainerをクリア
+
+    // 曲リストコンテナを作成し、SimpleBarを適用
+    const songsContainer = document.createElement('div');
+    songsContainer.className = 'songs-container'; // CSSでスクロール設定を適用
+    songsContainer.setAttribute('data-simplebar', ''); // SimpleBarを適用するための属性を追加
+    songsContainer.style.width = '55vw'; // 幅を100%に設定
+
+    // 曲リストを生成
+    album.songs.forEach((song, songIndex) => {
+        const listItem = document.createElement('div');
+        listItem.className = 'playlist-item';
+        listItem.textContent = `${songIndex + 1}. ${song.titles['ja']}`;
+        listItem.addEventListener('click', () => playVideo(albumIndex, songIndex, song.videoId));
+        songsContainer.appendChild(listItem);
+    });
+
+    // songsListContainerにsongsContainerを追加し、SimpleBarを適用
+    songsListContainer.appendChild(songsContainer);
+    
+    // SimpleBarの初期化を実行
+    new SimpleBar(songsContainer, { autoHide: false });
+}
+
+// 曲を再生
 function playVideo(albumIndex, songIndex, videoId) {
     currentAlbumIndex = albumIndex;
     currentVideoIndex = songIndex;
     const newSrc = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=1`;
     player.src = newSrc;
-    player.load();
-    player.addEventListener('ended', playNextVideo);
 }
 
-// Function to play the next video
-function playNextVideo() {
-    const albums = document.getElementsByClassName('album');
-    const currentAlbum = albums[currentAlbumIndex];
-    const playlistItems = currentAlbum.getElementsByClassName('playlist-item');
-    currentVideoIndex++;
-    if (currentVideoIndex < playlistItems.length) {
-        const nextItem = playlistItems[currentVideoIndex];
-        const videoId = getVideoIdFromItem(nextItem.textContent);
-        playVideo(currentAlbumIndex, currentVideoIndex, videoId);
-    } else {
-        // Playlist ended, move to the next album
-        currentVideoIndex = 0;
-        currentAlbumIndex++;
-        if (currentAlbumIndex < albums.length) {
-            const nextAlbum = albums[currentAlbumIndex];
-            const firstItem = nextAlbum.getElementsByClassName('playlist-item')[0];
-            const videoId = getVideoIdFromItem(firstItem.textContent);
-            playVideo(currentAlbumIndex, 0, videoId);
-        } else {
-            // All albums ended, reset to the first album and first song
-            currentAlbumIndex = 0;
-            currentVideoIndex = 0;
-        }
-    }
-}
-
-// Function to extract videoId from playlist item text
-function getVideoIdFromItem(itemText) {
-    const match = itemText.match(/\. (.*)/);
-    return match ? match[1] : null;
+// アルバム情報をクリア
+function clearAlbumInfo() {
+    albumImageContainer.innerHTML = '';
+    songsListContainer.innerHTML = '';
 }

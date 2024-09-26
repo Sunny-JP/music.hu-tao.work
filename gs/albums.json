@@ -1,0 +1,32 @@
+[
+    {
+        "title": "流るる星霜、華咲きて",
+        "image": "jacket/001.webp",
+        "songs": [
+            {"videoId": "Ojh300jzkBo", "titles": {"ja": "神女劈観・喚情", "en": "Song Title 1", "es": "Título de la Canción 1"}},
+            {"videoId": "in82FkTcrDI", "titles": {"ja": "華やかな灯火、星々の如く", "en": "Song Title 2", "es": "Título de la Canción 2"}},
+            {"videoId": "NjZokk90WhI", "titles": {"ja": "神女劈観・喚情 (ボーカルなし、楽器のみ)", "en": "Song Title 3", "es": "Título de la Canción 3"}}
+        ]
+    },
+    {
+        "title": "風と異邦人 ",
+        "image": "jacket/002.webp",
+        "songs": [
+            {"videoId": "W9kVvPluPy4", "titles": {"ja": "原神メインテーマ", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "LgbRN-Dh0Dw", "titles": {"ja": "アカツキワイナリー", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "tHWQglLvr4U", "titles": {"ja": "甘美な微笑み", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "T8S0rpmd8As", "titles": {"ja": "嵐、尖塔と聖域", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "Ui7L0VZqAT0", "titles": {"ja": "終焉のフィナーレ", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "fFaNq--7qu4", "titles": {"ja": "孤独の旅路", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "R0m22kEpEis", "titles": {"ja": "モンドの一日", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "P6B6Eq1-_wg", "titles": {"ja": "夢のアリア (原神メインテーマ変奏曲)", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "2lma93X4Wzk", "titles": {"ja": "青空", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "u5wg0Jsg-HA", "titles": {"ja": "平原のマージン", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "flWG_aJpbEA", "titles": {"ja": "トワリンとドゥリン", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "IKUlZj9Jb74", "titles": {"ja": "バトルの秘儀", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "acAhqYmGy2Q", "titles": {"ja": "騎士の善意", "en": "Song Title 3", "es": "Título de la Canción 3"}},
+            {"videoId": "orwVmkm4EGc", "titles": {"ja": "楽しい旅", "en": "Song Title 4", "es": "Título de la Canción 4"}},
+            {"videoId": "871_IRW81ME", "titles": {"ja": "風を捕まえる異邦人", "en": "Song Title 4", "es": "Título de la Canción 4"}}
+        ]
+    }
+]

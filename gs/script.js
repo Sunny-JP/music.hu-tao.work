@@ -35,11 +35,7 @@ function populateAlbumSelect(albumsData) {
 
 // アルバムのジャケットと曲リストを表示
 function showAlbumInfo(album, albumIndex) {
-    // アルバムのジャケットを表示
-    albumImageContainer.innerHTML = '';
-    const albumImage = document.createElement('img');
-    albumImage.src = album.image;
-    albumImageContainer.appendChild(albumImage);
+
 
     // 曲リストを表示
     songsListContainer.innerHTML = ''; // songsListContainerをクリア
@@ -48,7 +44,7 @@ function showAlbumInfo(album, albumIndex) {
     const songsContainer = document.createElement('div');
     songsContainer.className = 'songs-container'; // CSSでスクロール設定を適用
     songsContainer.setAttribute('data-simplebar', ''); // SimpleBarを適用するための属性を追加
-    songsContainer.style.width = '55vw'; // 幅を100%に設定
+    songsContainer.style.width = '100%'; // 幅を100%に設定
 
     // 曲リストを生成
     album.songs.forEach((song, songIndex) => {

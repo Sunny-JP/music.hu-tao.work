@@ -1,21 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
-
 body {
-    font-family: "Noto Sans JP", sans-serif;
+    font-family: "Poppins", "Kosugi", "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     background-color:black;
-    color: rgb(255, 233, 214);
+    color: rgb(255, 255, 255);
     margin: 0;
 }
 
 .container {
   max-width: 800px;
-  margin: 20px auto;
+  margin: auto;
   padding: 20px;
   background-color: black;
-  color: rgb(255, 233, 214);
+  color: rgb(255, 255, 255);
 }
 
 h1 {
@@ -30,21 +28,13 @@ h1 {
 }
 
 #album-info {
-  display: flex;
   margin-top: 20px;
-  max-width: 780px;
-}
-
-#album-image img {
-  max-width: 150px;
-  margin-right: 20px;
+  height: 140px;
 }
 
 .songs-container {
-  flex: 1;
-  max-height: 140px;
+  height: 140px;
   overflow-y: auto;
-  margin-top: 10px;
 }
 
 .playlist-item {
@@ -66,18 +56,54 @@ iframe {
 }
 
 .simplebar-scrollbar::before {
-  background-color: #0e357f
+  background-color: #ffffff
 }
 .simplebar-track.simplebar-vertical {
-  width: 12px;
+  width: 6px;
+  border-radius: 3px;
 }
 .simplebar-track {
-  background: rgba(0, 0, 0, 0);
-  width: 6px;
+  background: rgba(255, 255, 255, 0.142);
 }
 .simplebar-scrollbar {
-  background: #0e357f;
+  width: 6px;
+  background: #ffffff;
   border-radius: 3px;
   top: 0;
   right: 2px;
+}
+
+/* プルダウンの基本スタイル */
+#album-select {
+  appearance: none; /* デフォルトのスタイルを無効化 */
+  -webkit-appearance: none; /* Safari用 */
+  -moz-appearance: none; /* Firefox用 */
+  background-color: #000000; /* 背景色 */
+  color: #fff; /* テキスト色 */
+  font: inherit;
+  padding: 10px 40px 10px 15px; /* 右側にスペースを確保して矢印アイコンを表示 */
+  border: 1px solid #ffffff; /* 枠線 */
+  border-radius: 0px;
+  width: 100%; /* 幅を親要素に合わせる */
+  max-width: 80%; /* 最大幅 */
+  box-sizing: border-box; /* パディングを含む幅設定 */
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMCAyMCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2Ij4gICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNNS41IDlsNC41IDQuNSA0LjUtNC41IDEuNCAxLjQtNiA2LTYtNiAxLjQtMS40eiIvPjwvc3ZnPg=='); /* カスタムの矢印アイコンを背景画像として表示 */
+  background-repeat: no-repeat;
+  background-position: right 12px top 12px; /* 矢印アイコンの位置 */
+  background-size: 16px; /* 矢印アイコンのサイズ */
+  cursor: pointer;
+}
+
+/* フォーカス時のスタイル */
+#album-select:focus {
+  border-color: rgb(255, 255, 255); /* フォーカス時の枠線色をオレンジに */
+  outline: none;
+}
+
+/* プルダウン項目のスタイル */
+#album-select option {
+  background-color: #000000;
+  color: #fff;
+  border: 1px solid #ffffff; /* 枠線 */
+  border-radius: 0px;
 }

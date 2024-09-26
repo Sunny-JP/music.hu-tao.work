@@ -5,25 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BGM Player</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi&family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <h1>BGM Player</h1>
-        
-        <!-- プルダウンメニューでアルバム選択 -->
-        <label for="album-select">アルバムを選んでください:</label>
+
+
         <select id="album-select">
-            <option value="">アルバムを選択してください</option>
+            <option value="">Select an album</option>
         </select>
-        
-        <!-- アルバムのジャケットと曲リストの表示 -->
+
         <div id="album-info">
             <div id="album-image"></div>
-            <div id="songs-list-container">
-            </div>
+            <div id="songs-list-container"></div>
         </div>
 
         <!-- YouTubeプレイヤー -->
